@@ -19,17 +19,26 @@
                 <button id="send-button">Send</button>
             </div>
         </section>
-        <section id="image">
-            <h2>Generate an Image</h2>
-            <input type="text" id="image-description" placeholder="Describe the image...">
-            <button id="generate-image-button">Generate Image</button>
-            <div id="image-result"></div>
-        </section>
-        <section id="video">
-            <h2>Generate a Video</h2>
-            <input type="text" id="video-description" placeholder="Describe the video...">
-            <button id="generate-video-button">Generate Video</button>
-            <div id="video-result"></div>
+        <section id="train" style="display: none;">
+            <h2>Train the AI Bot</h2>
+            <div id="train-photo">
+                <h3>Train with Photos</h3>
+                <input type="file" id="photo-upload" accept="image/*">
+                <input type="text" id="photo-description" placeholder="Describe the photo...">
+                <button id="train-photo-button">Train</button>
+            </div>
+            <div id="train-video">
+                <h3>Train with Videos</h3>
+                <input type="file" id="video-upload" accept="video/*">
+                <input type="text" id="video-description" placeholder="Describe the video...">
+                <button id="train-video-button">Train</button>
+            </div>
+            <div id="train-text">
+                <h3>Train with Text</h3>
+                <input type="text" id="example-message" placeholder="Example message...">
+                <input type="text" id="example-reply" placeholder="Example reply...">
+                <button id="train-text-button">Train</button>
+            </div>
         </section>
     </main>
     <script src="assets/scripts.js"></script>
