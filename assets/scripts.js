@@ -33,6 +33,9 @@ def main():
             description = user_input[len('video:'):].strip()
             video = generate_video(description)
             video.play()
+        elif user_input == '//train_data':
+            print("Opening training section...")
+            # Code to open training section
         else:
             response = generate_chat_message(user_input)
             print(f"Bot: {response}")
@@ -40,3 +43,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+``` ▋
