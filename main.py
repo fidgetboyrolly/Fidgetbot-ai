@@ -3,6 +3,7 @@ from transformers import GPT4LMHeadModel, GPT4Tokenizer
 from dall_e import Dalle2
 from vq_vae import VQVAE2
 from reinforcement_learning import ReinforcementLearningAgent
+import re
 
 # Initialize models
 text_model = GPT4LMHeadModel.from_pretrained('gpt-4')
@@ -12,20 +13,17 @@ video_model = VQVAE2()
 rl_agent = ReinforcementLearningAgent()
 
 # Sample training data
-text_samples = [
-    {"message": "Hello, how are you?", "reply": "I'm doing well, thank you! How can I help you today?"},
-    {"message": "What's the weather like?", "reply": "It's sunny and warm outside."}
-]
+text_samples = []
 
-image_samples = [
-    {"file": "uploads/photos/example1.jpg", "description": "A beautiful sunrise over the mountains."},
-    {"file": "uploads/photos/example2.jpg", "description": "A serene beach with clear blue water."}
-]
+def load_training_data(file_path):
+    with open(file_path, 'r') as file:
+        data = file.read()
+        pattern = r'\[data;train\{response:(.*?)\}\{user_input:(.*?)\}txt\]'
+        matches = re.findall(pattern, data)
+        for match in matches:
+            text_samples.append({"message": match[1], "reply": match[0]})
 
-video_samples = [
-    {"file": "uploads/videos/example1.mp4", "description": "A time-lapse of a city skyline at night."},
-    {"file": "uploads/videos/example2.mp4", "description": "A cat playing with a ball of yarn."}
-]
+load_training_data('train_data.txt')
 
 def generate_chat_message(prompt):
     inputs = text_tokenizer(prompt, return_tensors='pt')
