@@ -11,6 +11,22 @@ image_model = Dalle2()
 video_model = VQVAE2()
 rl_agent = ReinforcementLearningAgent()
 
+# Sample training data
+text_samples = [
+    {"message": "Hello, how are you?", "reply": "I'm doing well, thank you! How can I help you today?"},
+    {"message": "What's the weather like?", "reply": "It's sunny and warm outside."}
+]
+
+image_samples = [
+    {"file": "uploads/photos/example1.jpg", "description": "A beautiful sunrise over the mountains."},
+    {"file": "uploads/photos/example2.jpg", "description": "A serene beach with clear blue water."}
+]
+
+video_samples = [
+    {"file": "uploads/videos/example1.mp4", "description": "A time-lapse of a city skyline at night."},
+    {"file": "uploads/videos/example2.mp4", "description": "A cat playing with a ball of yarn."}
+]
+
 def generate_chat_message(prompt):
     inputs = text_tokenizer(prompt, return_tensors='pt')
     outputs = text_model.generate(inputs['input_ids'])
