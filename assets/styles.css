@@ -73,3 +73,20 @@ button:hover {
     padding: 10px;
     margin-bottom: 10px;
 }
+
+#training-progress {
+    margin-top: 20px;
+}
+
+#progress-bar {
+    width: 100%;
+    background-color: #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#progress {
+    width: 0;
+    height: 20px;
+    background-color: #4caf50;
+}
