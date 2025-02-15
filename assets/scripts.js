@@ -1,4 +1,3 @@
-import torch
 document.getElementById('send-button').addEventListener('click', function() {
     const userInput = document.getElementById('user-input').value;
     if (userInput === '//train_data') {
