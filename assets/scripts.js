@@ -1,46 +1,34 @@
 import torch
-from transformers import GPT4LMHeadModel, GPT4Tokenizer
-from dall_e import Dalle2
-from vq_vae import VQVAE2
-from reinforcement_learning import ReinforcementLearningAgent
+document.getElementById('send-button').addEventListener('click', function() {
+    const userInput = document.getElementById('user-input').value;
+    if (userInput === '//train_data') {
+        document.getElementById('train').style.display = 'block';
+    } else {
+        // Handle user input and response
+        console.log('User Input:', userInput);
+    }
+});
 
-# Initialize models
-text_model = GPT4LMHeadModel.from_pretrained('gpt-4')
-text_tokenizer = GPT4Tokenizer.from_pretrained('gpt-4')
-image_model = Dalle2()
-video_model = VQVAE2()
-rl_agent = ReinforcementLearningAgent()
+document.getElementById('train-photo-button').addEventListener('click', function() {
+    const photo = document.getElementById('photo-upload').files[0];
+    const description = document.getElementById('photo-description').value;
+    // Handle photo training logic here
+    console.log('Photo:', photo);
+    console.log('Description:', description);
+});
 
-def generate_chat_message(prompt):
-    inputs = text_tokenizer(prompt, return_tensors='pt')
-    outputs = text_model.generate(inputs['input_ids'])
-    return text_tokenizer.decode(outputs[0], skip_special_tokens=True)
+document.getElementById('train-video-button').addEventListener('click', function() {
+    const video = document.getElementById('video-upload').files[0];
+    const description = document.getElementById('video-description').value;
+    // Handle video training logic here
+    console.log('Video:', video);
+    console.log('Description:', description);
+});
 
-def generate_image(description):
-    return image_model.generate_image(description)
-
-def generate_video(description):
-    return video_model.generate_video(description)
-
-def main():
-    while True:
-        user_input = input("You: ")
-        if user_input.startswith('image:'):
-            description = user_input[len('image:'):].strip()
-            image = generate_image(description)
-            image.show()
-        elif user_input.startswith('video:'):
-            description = user_input[len('video:'):].strip()
-            video = generate_video(description)
-            video.play()
-        elif user_input == '//train_data':
-            print("Opening training section...")
-            # Code to open training section
-        else:
-            response = generate_chat_message(user_input)
-            print(f"Bot: {response}")
-            rl_agent.learn_from_interaction(user_input, response)
-
-if __name__ == "__main__":
-    main()
-``` ▋
+document.getElementById('train-text-button').addEventListener('click', function() {
+    const exampleMessage = document.getElementById('example-message').value;
+    const exampleReply = document.getElementById('example-reply').value;
+    // Handle text training logic here
+    console.log('Example Message:', exampleMessage);
+    console.log('Example Reply:', exampleReply);
+});
