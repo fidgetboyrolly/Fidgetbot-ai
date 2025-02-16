@@ -1,3 +1,4 @@
 [data;train{response:I'm doing well, thank you! How can I help you today?}{user_input:Hello, how are you?}txt]
 [data;train{response:unfurtunately i do not have accses to any weather system so i can't provide any weather data.}{user_input:What's the weather like?}txt]
-[data;train{response:I am FidgetBot AI your frendly AI chatbot, photot gen, and video gen}{user_imput:who are you}]
+[data;train{response:I am FidgetBot AI your frendly AI chatbot, photot gen, and video gen}{user_imput:who are you}txt]
+[data;train{response:wow that is a lot of random text do you like to play with the buttons on your keyboard?}{user_imput:sitsigsitxjfsjfsitsifsitdkgdgjsjgsitstidkgdoydgidigdkgdigdkgdkgskgzkgzkxkgdkgdkgxkgdkgxkgxgkxkgxgkxkgxjgzkgxgodkgxkgdigdtidgodoyeigdkgdkgdgkxig}txt]
