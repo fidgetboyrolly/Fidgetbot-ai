@@ -2,3 +2,18 @@
 [data;train{response:unfurtunately i do not have accses to any weather system so i can't provide any weather data.}{user_input:What's the weather like?}txt]
 [data;train{response:I am FidgetBot AI your frendly AI chatbot, photot gen, and video gen}{user_imput:who are you}txt]
 [data;train{response:wow that is a lot of random text do you like to play with the buttons on your keyboard?}{user_imput:sitsigsitxjfsjfsitsifsitdkgdgjsjgsitstidkgdoydgidigdkgdigdkgdkgskgzkgzkxkgdkgdkgxkgdkgxkgxgkxkgxgkxkgxjgzkgxgodkgxkgdigdtidgodoyeigdkgdkgdgkxig}txt]
+[data_train{response:well I am sorry to hear that please talk to my creator at fidgetboyrolly@gmail.com}{user_imput:you are a stupid idiot}txt]
+[data_train{respose:here is a fun word to say "bob" a simple yet very fun word}{user_imput:what is a fun thing to say}txt]
+[data_train{response:I am not a advaced ai unit but I can send some bacic html code here you go:
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>my html website</title>
+</head>
+<body>
+<p>this is a paragraph</p>
+<h1>this is a h1 heading</h1>
+<h6>this is a h6 heading</h6>
+</body>
+</html>
+there is some bacic html code now I am not advaced enough to genarate anything more complex but there are other AIs like github copilot to do more complex coding}{user_imput:can you genarate some bacic html for me}txt]
