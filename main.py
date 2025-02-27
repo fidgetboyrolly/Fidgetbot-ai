@@ -14,14 +14,23 @@ rl_agent = ReinforcementLearningAgent()
 
 # Sample training data
 text_samples = []
+image_samples = []
+video_samples = []
 
 def load_training_data(file_path):
     with open(file_path, 'r') as file:
         data = file.read()
-        pattern = r'\[data;train\{response:(.*?)\}\{user_input:(.*?)\}txt\]'
+        pattern = r'\[data;train\{(response:.*?)}\{(user_input:.*?)}txt\]'
         matches = re.findall(pattern, data)
         for match in matches:
-            text_samples.append({"message": match[1], "reply": match[0]})
+            response = re.search(r'response:(.*?)\}', match[0]).group(1)
+            user_input = re.search(r'user_input:(.*?)\}', match[1]).group(1).replace('**', '')
+            if '/png:' in response:
+                image_samples.append({"description": response.split('/png:')[1].strip(), "response": response})
+            elif '/mp4:' in response:
+                video_samples.append({"description": response.split('/mp4:')[1].strip(), "response": response})
+            else:
+                text_samples.append({"message": user_input, "reply": response})
 
 load_training_data('train_data.txt')
 
