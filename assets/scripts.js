@@ -38,6 +38,15 @@ document.getElementById('train-video-button').addEventListener('click', function
     updateProgressBar();
 });
 
+document.getElementById('train-voice-button').addEventListener('click', function() {
+    const voice = document.getElementById('voice-upload').files[0];
+    const description = document.getElementById('voice-description').value;
+    // Handle voice training logic here
+    console.log('Voice:', voice);
+    console.log('Description:', description);
+    updateProgressBar();
+});
+
 document.getElementById('train-text-button').addEventListener('click', function() {
     const exampleMessage = document.getElementById('example-message').value;
     const exampleReply = document.getElementById('example-reply').value;
