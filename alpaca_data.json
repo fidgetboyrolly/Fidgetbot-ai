@@ -1,0 +1,10 @@
+import json
+
+with open("alpaca_data.json", "r") as f:
+    data = json.load(f)
+
+with open("alternate_public_train_data.txt", "w") as out:
+    for entry in data:
+        user = entry["instruction"] + (" " + entry["input"] if entry["input"] else "")
+        response = entry["output"]
+        out.write(f"[train_data{{response:{response}}}{{user_input:{user}}}txt]\n")
