@@ -2,6 +2,10 @@ import re
 import os
 
 TRAIN_FILE = "train_data.txt"
+MIN_TRAIN_Cimport re
+import os
+
+TRAIN_FILE = "train_data.txt"
 MIN_TRAIN_COUNT = 100  # Adjust as needed
 
 def standardize_and_fix_entries():
@@ -50,6 +54,9 @@ def bootstrap_with_public_data(public_data_path):
         with open(TRAIN_FILE, "a", encoding="utf8") as dest:
             for line in lines:
                 dest.write(line)
+
+# Call this once at startup to fix typos in existing file
+standardize_and_fix_entries()
 
 # Call this once at startup to fix typos in existing file
 standardize_and_fix_entries()
