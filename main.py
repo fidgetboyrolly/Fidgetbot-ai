@@ -7,6 +7,17 @@ import re
 import torchaudio
 import os
 
+# NEW: Training data management
+from training_data_manager import (
+    append_to_train_data,
+    bootstrap_with_public_data,
+    standardize_and_fix_entries
+)
+
+# At startup: fix previous entries and bootstrap if needed
+standardize_and_fix_entries()
+bootstrap_with_public_data("alternate_public_train_data.txt")  # You may place a public dataset here
+
 # Initialize models
 text_model = GPT4LMHeadModel.from_pretrained('gpt-4')
 text_tokenizer = GPT4Tokenizer.from_pretrained('gpt-4')
@@ -23,7 +34,7 @@ voice_samples = []
 def load_training_data(file_path):
     with open(file_path, 'r') as file:
         data = file.read()
-        pattern = r'\[data;train\{(response:.*?)}\{(user_input:.*?)}txt\]'
+        pattern = r'\[train_data\{(response:.*?)}\{(user_input:.*?)}txt\]'
         matches = re.findall(pattern, data)
         for match in matches:
             response = re.search(r'response:(.*?)\}', match[0]).group(1)
@@ -34,7 +45,7 @@ def load_training_data(file_path):
                 video_samples.append({"description": response.split('/mp4:')[1].strip(), "response": response})
             else:
                 text_samples.append({"message": user_input, "reply": response})
-        
+
         # Load voice training data
         voice_pattern = r'\[train_data_voice\{/mp3 value=(.*?)\\ (.*?)\}voice\]'
         voice_matches = re.findall(voice_pattern, data)
@@ -87,6 +98,8 @@ def main():
             response = generate_chat_message(user_input)
             print(f"Bot: {response}")
             rl_agent.learn_from_interaction(user_input, response)
+            # NEW: log every exchange for training
+            append_to_train_data(user_input, response)
 
 if __name__ == "__main__":
     main()
